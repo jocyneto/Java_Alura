@@ -1,4 +1,4 @@
-package br.com.alura.gerenciador.servlet;
+package br.com.alura.modelo;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,21 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns="/ola")
-public class OiMundo extends HttpServlet{
-	
-	@Override
+/**
+ * Servlet implementation class NovaEmpresaServlet
+ */
+@WebServlet("/novaEmpresa")
+public class NovaEmpresaServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+    
+  
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();
 		
-		out.print("<html>");
-		out.print("<body>");
-		out.print("<h1>OLHA MUNDO MEU PRIMEIRO SERVLET!!!</h1>");
-		out.print("<h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>");
-		out.print("</body>");
-		out.print("</html>");
+		
+		
 		
 	}
-	
-	
+
 }
