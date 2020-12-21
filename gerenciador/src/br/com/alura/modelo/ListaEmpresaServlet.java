@@ -25,23 +25,25 @@ public class ListaEmpresaServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String empresaEnviada;
 		
-		List<Empresa> listaDeEmpresas = new ArrayList<>();
+		List<Empresa> lista = new ArrayList<>();
 		//PrintWriter out;		
-		Empresa empresas = new Empresa();	
+		Empresa emp = new Empresa();	
 		BancoSimulado bs = new BancoSimulado();		
 		
-		//out = response.getWriter();		
+		//out = response.getWriter();
+		lista = bs.getLista();
 		empresaEnviada = request.getParameter("nome");
-		empresas.setNome(empresaEnviada);
-		bs.adiciona(empresas);
-		listaDeEmpresas = bs.getLista();
+		emp.setNome(empresaEnviada);
+		bs.adiciona(emp);
 		
-		System.out.println(listaDeEmpresas);
+		
+		System.out.println(lista);
 		
 		//chamar jsp
-		RequestDispatcher rd = request.getRequestDispatcher("listaEmpresaCriada.jsp");
-		request.setAttribute("listaDasEmpresas", listaDeEmpresas);
+		
+		request.setAttribute("empresas", lista);
 		request.setAttribute("empresaEscrita", empresaEnviada);
+		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresaCriada.jsp");
 		rd.forward(request, response);
 		
 		
