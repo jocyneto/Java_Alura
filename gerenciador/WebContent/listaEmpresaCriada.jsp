@@ -1,24 +1,23 @@
-<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="br.com.alura.modelo.Empresa, java.util.List, java.util.ArrayList"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%
-	String empresaEnviada = (String)request.getAttribute("empresaEscrita");
-	List<Empresa> listaDeEmpresas = (List<Empresa>) request.getAttribute("empresas");
- %>
  
  
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Java Standard Tag Library</title>
 </head>
 <body>
-	<p>Nova empresa cadastrada: <%=empresaEnviada %></p> 
+	<p>Nova empresa cadastrada: ${ empresaEscrita }</p> 
 	<h3>Lista das empresas cadastradas:</h3>
-	<% for(Empresa empr : listaDeEmpresas){  %>
-	<li><%=empr.getNome() %></li>
-	<%} %>
+	<ul>
+		<c:forEach items="${empresas}" var="emp" >
+			<li>${emp.nome}</li>
+		</c:forEach>
+	</ul>	
 </body>
 </html>
