@@ -2,7 +2,10 @@ package br.com.alura.modelo;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -24,7 +27,9 @@ public class ListaEmpresaServlet extends HttpServlet {
   
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String empresaEnviada;
-		
+		String dataEnviada;
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date dataAbertura = null;		
 		List<Empresa> lista = new ArrayList<>();
 		//PrintWriter out;		
 		Empresa emp = new Empresa();	
@@ -33,11 +38,19 @@ public class ListaEmpresaServlet extends HttpServlet {
 		//out = response.getWriter();
 		lista = bs.getLista();
 		empresaEnviada = request.getParameter("nome");
+		dataEnviada = request.getParameter("data");
+		
+		try {			
+			dataAbertura = sdf.parse(dataEnviada);
+		} catch (ParseException e) {			
+			throw new ServletException(e);
+		}
+		
 		emp.setNome(empresaEnviada);
+		emp.setDataAbertura(dataAbertura);
 		bs.adiciona(emp);
 		
 		
-		System.out.println(lista);
 		
 		//chamar jsp
 		
