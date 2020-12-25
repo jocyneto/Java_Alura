@@ -4,7 +4,7 @@
 <html lang="pt-br">
 	<head>
 		<meta>
-		<title>Criando um servlet</title>
+		<title>Criando ums servlet</title>
 	</head>
 	<body>
 		<form action="${enderecoUrl}" method="post">
