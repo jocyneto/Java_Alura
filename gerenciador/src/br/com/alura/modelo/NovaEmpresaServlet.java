@@ -22,8 +22,8 @@ public class NovaEmpresaServlet extends HttpServlet{
 		
 		//PrintWriter out = resp.getWriter();
 		//chamar o JPS
-		RequestDispatcher rd = request.getRequestDispatcher("/novaEmpresaCriada.jsp");
-		request.setAttribute("empresa", emp.getNome());
+		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresa");
+		request.setAttribute("nomeEmpresa", emp.getNome());
 		rd.forward(request, response);
 		
 		

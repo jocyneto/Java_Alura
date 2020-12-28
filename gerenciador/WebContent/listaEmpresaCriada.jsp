@@ -10,7 +10,7 @@
 <title>Java Standard Tag Library</title>
 </head>
 <body>
-	<p>Nova empresa cadastrada: ${ empresaEscrita }</p> 
+	<p>Nova empresa cadastrada: ${ nomeEmpresa }</p> 
 	<h3>Lista das empresas cadastradas:</h3>
 	<ul>
 		<c:forEach items="${empresas}" var="lista" >

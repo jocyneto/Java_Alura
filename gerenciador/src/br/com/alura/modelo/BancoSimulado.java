@@ -5,6 +5,7 @@ import java.util.List;
 
 public class BancoSimulado {
 	private static List<Empresa> lista = new ArrayList<>();
+	private static List<Material> listaDeMaterial = new ArrayList<>();
 	
 	static {
 		Empresa emp = new Empresa();
@@ -20,9 +21,19 @@ public class BancoSimulado {
 		BancoSimulado.lista.add(empresa);
 	}
 	
+	public void adiciona(Material material) {
+		BancoSimulado.listaDeMaterial.add(material);
+	}
+	
 	public List<Empresa> getLista() {
 		return BancoSimulado.lista;
 	}
+	
+	public List<Material> getListaDeMaterial() {
+		return BancoSimulado.listaDeMaterial;
+	}
+	
+
 	
 	
 }
