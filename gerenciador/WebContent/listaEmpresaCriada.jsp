@@ -10,7 +10,10 @@
 <title>Java Standard Tag Library</title>
 </head>
 <body>
-	<p>Nova empresa cadastrada: ${ nomeEmpresa }</p> 
+	<c:if test="${not empty nomeEmpresa }">
+			<fmt:formatDate value="${dataEmpresa}" pattern="dd/MM/yyyy" var="dataCriacao"/>
+			<p>Empresa ${nomeEmpresa} criada, data de abertura em ${dataCriacao} </p>
+	</c:if>
 	<h3>Lista das empresas cadastradas:</h3>
 	<ul>
 		<c:forEach items="${empresas}" var="lista" >

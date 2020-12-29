@@ -26,41 +26,18 @@ public class ListaEmpresaServlet extends HttpServlet {
     
   
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String empresaEnviada;
-		String dataEnviada;
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Date dataAbertura = null;		
-		List<Empresa> lista = new ArrayList<>();
-		//PrintWriter out;		
-		Empresa emp = new Empresa();	
-		BancoSimulado bs = new BancoSimulado();		
+		//Instância dos objetos
+		BancoSimulado bs = new BancoSimulado();	
 		
-		//out = response.getWriter();
-		lista = bs.getLista();
-		empresaEnviada = request.getParameter("nome");
-		dataEnviada = request.getParameter("data");
+		//Variaveis
+		List<Empresa> lista = lista = bs.getLista();			
 		
-		try {			
-			dataAbertura = sdf.parse(dataEnviada);
-		} catch (ParseException e) {			
-			throw new ServletException(e);
-		}
-		
-		emp.setNome(empresaEnviada);
-		emp.setDataAbertura(dataAbertura);
-		bs.adiciona(emp);
-		
-		
+		//Request dos atributos do servlet para a JSP que irá chamar
+		request.setAttribute("empresas", lista);
 		
 		//chamar jsp
-		
-		request.setAttribute("empresas", lista);
-		request.setAttribute("empresaEscrita", empresaEnviada);
 		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresaCriada.jsp");
-		rd.forward(request, response);
-		
-		
-		
+		rd.forward(request, response);		
 		
 	}
 
