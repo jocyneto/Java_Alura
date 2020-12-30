@@ -6,14 +6,14 @@ import java.util.List;
 
 public class Empresa {
 	
-	private long id;
+	private Integer id;
 	private String nome;
 	private Date dataAbertura = new Date();
 	
-	public long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getNome() {
