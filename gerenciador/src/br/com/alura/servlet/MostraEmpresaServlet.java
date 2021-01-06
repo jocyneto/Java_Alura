@@ -1,4 +1,4 @@
-package br.com.alura.modelo;
+package br.com.alura.servlet;
 
 import java.io.IOException;
 
@@ -9,7 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/mostraEmpresa")
+import br.com.alura.modelo.BancoSimulado;
+import br.com.alura.modelo.Empresa;
+
+//@WebServlet("/mostraEmpresa")
 public class MostraEmpresaServlet extends HttpServlet {
  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

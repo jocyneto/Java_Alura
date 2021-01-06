@@ -20,8 +20,8 @@
 			<fmt:formatDate value="${lista.dataAbertura}" pattern="dd/MM/yyyy" var="dataAbetura"/>
 			<li>
 				${lista.nome} - ${dataAbetura}
-				<a href="/gerenciador/mostraEmpresa?id=${lista.id}">editar</a>
-				<a href="/gerenciador/removeEmpresa?id=${lista.id}">remove</a>
+				<a href="/gerenciador/entrada?acao=MostraEmpresa&id=${lista.id}">editar</a>
+				<a href="/gerenciador/entrada?acao=RemoveEmpresa&id=${lista.id}">remove</a>
 			</li>
 			
 		</c:forEach>

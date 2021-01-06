@@ -1,4 +1,4 @@
-package br.com.alura.modelo;
+package br.com.alura.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,10 +17,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.jasper.tagplugins.jstl.core.ForEach;
 
+import br.com.alura.modelo.BancoSimulado;
+import br.com.alura.modelo.Empresa;
+
 /**
  * Servlet implementation class NovaEmpresaServlet
  */
-@WebServlet("/listaEmpresa")
+//@WebServlet("/listaEmpresa")
 public class ListaEmpresaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
