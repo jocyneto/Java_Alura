@@ -6,7 +6,7 @@ import java.util.List;
 
 public class BancoSimulado {
 	private static List<Empresa> lista = new ArrayList<>();
-	private static List<Material> listaDeMaterial = new ArrayList<>();
+	private static List<Usuario> listaDeUsuario = new ArrayList<>();
 	private static Integer chaveIntegradora = 1;
 	
 	static {
@@ -19,6 +19,15 @@ public class BancoSimulado {
 		BancoSimulado.lista.add(emp);
 		BancoSimulado.lista.add(emp2);
 		
+		Usuario adm = new Usuario();
+		adm.setLogin("adm");
+		adm.setSenha("1234");
+		BancoSimulado.listaDeUsuario.add(adm);
+		Usuario adm2 = new Usuario();
+		adm2.setLogin("jo");
+		adm2.setSenha("1234");
+		BancoSimulado.listaDeUsuario.add(adm2);
+		
 	}
 	
 	public void adiciona(Empresa empresa) {
@@ -26,17 +35,12 @@ public class BancoSimulado {
 		BancoSimulado.lista.add(empresa);
 	}
 	
-	public void adiciona(Material material) {
-		BancoSimulado.listaDeMaterial.add(material);
-	}
+	
 	
 	public List<Empresa> getLista() {
 		return BancoSimulado.lista;
 	}
-	
-	public List<Material> getListaDeMaterial() {
-		return BancoSimulado.listaDeMaterial;
-	}
+
 
 	public void remove(Integer id) {
 		Iterator<Empresa> it = lista.iterator();
@@ -54,6 +58,17 @@ public class BancoSimulado {
 		for (Empresa empresa : lista) {
 			if(empresa.getId() == id) {
 				return empresa;
+			}
+		}
+		return null;
+	}
+
+
+
+	public Usuario pegaUsuario(String login, String senha) {
+		for (Usuario user : listaDeUsuario) {
+			if (user.ehIgual(login, senha)) {
+				return user;
 			}
 		}
 		return null;
