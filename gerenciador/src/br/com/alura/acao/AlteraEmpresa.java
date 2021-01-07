@@ -12,8 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.alura.modelo.BancoSimulado;
 import br.com.alura.modelo.Empresa;
 
-public class AlteraEmpresa {
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+public class AlteraEmpresa implements Acao {
+	
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("Alterando empresa");
+		
 		//Criação dos objetos empresa e "Banco de dados"
 		Empresa empresa;
 		BancoSimulado bs = new BancoSimulado();
@@ -43,7 +46,7 @@ public class AlteraEmpresa {
 		
 		
 		//Passando para frente os dados
-		response.sendRedirect("entrada?acao=ListaEmpresa");
+		return "redirect:entrada?acao=ListaEmpresa";
 	}
 
 	

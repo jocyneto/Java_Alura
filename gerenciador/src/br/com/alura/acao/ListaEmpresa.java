@@ -11,9 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.alura.modelo.BancoSimulado;
 import br.com.alura.modelo.Empresa;
 
-public class ListaEmpresa {
+public class ListaEmpresa implements Acao{
 
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("Listando Empresa");
 		//Instância dos objetos
 		BancoSimulado bs = new BancoSimulado();	
 		
@@ -24,8 +25,7 @@ public class ListaEmpresa {
 		request.setAttribute("empresas", lista);
 		
 		//chamar jsp
-		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresaCriada.jsp");
-		rd.forward(request, response);	
+		return "foward:/listaEmpresaCriada.jsp";
 		
 	}
 

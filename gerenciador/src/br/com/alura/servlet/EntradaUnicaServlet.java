@@ -2,13 +2,16 @@ package br.com.alura.servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.alura.acao.Acao;
 import br.com.alura.acao.AlteraEmpresa;
+import br.com.alura.acao.CadastroEmpresaForm;
 import br.com.alura.acao.ListaEmpresa;
 import br.com.alura.acao.MostraEmpresa;
 import br.com.alura.acao.NovaEmpresa;
@@ -21,32 +24,53 @@ public class EntradaUnicaServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String paramAcao = request.getParameter("acao");
+		String nomeRequisicao = null;
 		
-		if(paramAcao.equals("ListaEmpresa")) {
-			System.out.println("Listando Empresa");
-			ListaEmpresa le = new ListaEmpresa();
-			le.executa(request, response);
+		String nomeClasse = "br.com.alura.acao." + paramAcao;		
+		try {
+			Class classe = Class.forName(nomeClasse);
+			Object obj = classe.newInstance();
+			Acao acao = (Acao) obj;
+			nomeRequisicao = acao.executa(request, response);
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+			throw new ServletException(e);
+		}
+		
+		String[] requisicao = nomeRequisicao.split(":");
+		if(requisicao[0].equals("foward")) {
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/"+requisicao[1]);
+			rd.forward(request, response);	
+		}else {
+			response.sendRedirect(requisicao[1]);
+		}		
+		
+				
+		/*
+		if(paramAcao.equals("ListaEmpresa")) {			
+			ListaEmpresa acao = new ListaEmpresa();
+			nomeRequisicao = acao.executa(request, response);
 			
-		}else if(paramAcao.equals("RemoveEmpresa")) {
-			System.out.println("Removendo Empresa");
-			RemoveEmpresa re = new RemoveEmpresa();
-			re.executa(request, response);
+		}else if(paramAcao.equals("RemoveEmpresa")) {			
+			RemoveEmpresa acao = new RemoveEmpresa();
+			nomeRequisicao = acao.executa(request, response);
 			
-		} else if(paramAcao.equals("AlteraEmpresa")) {
-			System.out.println("Alterando empresa");
-			AlteraEmpresa ae = new AlteraEmpresa();
-			ae.executa(request, response);
+		} else if(paramAcao.equals("AlteraEmpresa")) {			
+			AlteraEmpresa acao = new AlteraEmpresa();
+			nomeRequisicao = acao.executa(request, response);
 			
-		} else if(paramAcao.equals("MostraEmpresa")) {
-			System.out.println("Mostrando empresa");
-			MostraEmpresa me = new MostraEmpresa();
-			me.executa(request, response);
+		} else if(paramAcao.equals("MostraEmpresa")) {			
+			MostraEmpresa acao = new MostraEmpresa();
+			nomeRequisicao = acao.executa(request, response);
 			
 		} else if(paramAcao.equals("NovaEmpresa")) {
-			System.out.println("Nova empresa");
-			NovaEmpresa ne = new NovaEmpresa();
-			ne.executa(request, response);
+			NovaEmpresa acao = new NovaEmpresa();
+			nomeRequisicao = acao.executa(request, response);
+		} else if(paramAcao.equals("CadastroEmpresaForm")) {
+			CadastroEmpresaForm acao = new CadastroEmpresaForm();
+			nomeRequisicao = acao.executa(request, response);
 		}
+		*/
+		
 		
 	}
 

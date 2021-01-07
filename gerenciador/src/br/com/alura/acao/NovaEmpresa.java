@@ -12,9 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.alura.modelo.BancoSimulado;
 import br.com.alura.modelo.Empresa;
 
-public class NovaEmpresa {
+public class NovaEmpresa implements Acao {
 
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		System.out.println("Nova empresa");
+		
 		//Criação dos objetos empresa e "Banco de dados"
 		Empresa emp = new Empresa();
 		BancoSimulado banco = new BancoSimulado();
@@ -43,9 +45,7 @@ public class NovaEmpresa {
 		request.setAttribute("dataEmpresa", emp.getDataAbertura());
 
 		//chamar o JPS	
-		response.sendRedirect("entrada?acao=ListaEmpresa");
-		//		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresa");		
-		//		rd.forward(request, response);
+		return "redirect:entrada?acao=ListaEmpresa";
 
 	}
 
