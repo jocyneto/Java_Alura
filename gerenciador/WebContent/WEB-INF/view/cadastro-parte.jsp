@@ -1,0 +1,1 @@
+<a href="entrada?acao=CadastroEmpresaForm">CADASTRAR</a>

@@ -10,6 +10,10 @@
 <title>Java Standard Tag Library</title>
 </head>
 <body>
+<c:import url="cadastro-parte.jsp"></c:import>
+	<c:import url="logout-parte.jsp" />
+	<p>Usuario ativo: ${usuarioLogado.login}</p>
+	
 	<c:if test="${not empty nomeEmpresa }">
 			<fmt:formatDate value="${dataEmpresa}" pattern="dd/MM/yyyy" var="dataCriacao"/>
 			<p>Empresa ${nomeEmpresa} criada, data de abertura em ${dataCriacao} </p>

@@ -11,6 +11,7 @@
 		</head>
 		
 		<body>
+			<c:import url="logout-parte.jsp" />
 			<h2>Cadastrando Empresa:</h2>
 			<form action="${url}" method="post">
 				Nome do Empresa: <input type="text" name="nome" value="${empresa.nome}"/>

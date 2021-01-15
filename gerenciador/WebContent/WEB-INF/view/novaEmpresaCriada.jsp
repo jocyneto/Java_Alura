@@ -3,6 +3,7 @@
 
 <html>
 	<body>
+		<c:import url="logout-parte.jsp" />
 		<c:if test="${not empty nomeEmpresa }">
 			<fmt:formatDate value="${dataEmpresa}" pattern="dd/MM/yyyy" var="dataCriacao"/>
 			<p>Empresa ${nomeEmpresa} criada, data de abertura em ${dataCriacao} </p>
