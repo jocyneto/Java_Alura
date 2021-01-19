@@ -18,21 +18,22 @@ import br.com.alura.acao.MostraEmpresa;
 import br.com.alura.acao.NovaEmpresa;
 import br.com.alura.acao.RemoveEmpresa;
 
-@WebServlet("/entrada")
+//@WebServlet("/entrada")
 public class EntradaUnicaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String paramAcao = request.getParameter("acao");
 		
-		HttpSession sessao = request.getSession();
-		boolean usuarioNaoEstaLogado = sessao.getAttribute("usuarioLogado") == null;
-		boolean ehUmaAcaoProtegida = !(paramAcao.equals("Login") || paramAcao.equals("LoginForm"));
-		
-		if(usuarioNaoEstaLogado && ehUmaAcaoProtegida) {
-			response.sendRedirect("entrada?acao=LoginForm");
-			return;
-		}		
+//		HttpSession sessao = request.getSession();
+//		boolean usuarioNaoEstaLogado = sessao.getAttribute("usuarioLogado") == null;
+//		boolean ehUmaAcaoProtegida = !(paramAcao.equals("Login") || paramAcao.equals("LoginForm"));
+//		
+//		if(usuarioNaoEstaLogado && ehUmaAcaoProtegida) {
+//			response.sendRedirect("entrada?acao=LoginForm");
+//			return;
+//		}		
 		
 		String nomeRequisicao = null;
 		
