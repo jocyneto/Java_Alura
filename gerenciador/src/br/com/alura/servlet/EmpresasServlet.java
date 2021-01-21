@@ -24,7 +24,7 @@ public class EmpresasServlet extends HttpServlet {
 		BancoSimulado bs = new BancoSimulado();
 		List<Empresa> empresas = bs.getLista();
 		
-		String requisicao = request.getParameter("");
+		String requisicao = request.getHeader("Accept");
 		
 		if (requisicao.contains("xml")) {
 			XStream xstream = new XStream();
