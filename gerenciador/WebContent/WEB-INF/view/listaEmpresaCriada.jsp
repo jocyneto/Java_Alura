@@ -10,7 +10,7 @@
 <title>Java Standard Tag Library</title>
 </head>
 <body>
-<c:import url="cadastro-parte.jsp"></c:import>
+	<c:import url="cadastro-parte.jsp"></c:import>
 	<c:import url="logout-parte.jsp" />
 	<p>Usuario ativo: ${usuarioLogado.login}</p>
 	

@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 
 import br.com.jojomaster.acao.Acao;
 
-//@WebFilter("/entrada")
+@WebFilter("/entrada")
 public class ControladorFilter implements Filter {
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {}
@@ -26,6 +26,7 @@ public class ControladorFilter implements Filter {
 	public void destroy() {}
 	
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
+		
 		System.out.println("Chamando ControladorFilter");
 
 		HttpServletRequest request = (HttpServletRequest) servletRequest;

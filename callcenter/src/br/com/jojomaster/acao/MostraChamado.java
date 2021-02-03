@@ -1,0 +1,30 @@
+package br.com.jojomaster.acao;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import br.com.jojomaster.modelo.BancoDados;
+import br.com.jojomaster.modelo.Chamado;
+
+public class MostraChamado implements Acao {
+
+	@Override
+	public String executa(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+		
+		String paramId = request.getParameter("id");
+		Integer id = Integer.valueOf(paramId);
+		
+		BancoDados db = new BancoDados();
+		
+		Chamado chamado = db.pegaEmpresaID(id);
+		
+		request.setAttribute("chamado", chamado);
+		
+		return "foward:/alteraChamadoForm.jsp";
+	}
+
+}
