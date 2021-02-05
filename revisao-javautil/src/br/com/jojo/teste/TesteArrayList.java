@@ -1,6 +1,9 @@
 package br.com.jojo.teste;
 
+import java.awt.List;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Vector;
 
 import br.com.bytebank.modelo.Conta;
 import br.com.bytebank.modelo.ContaCorrente;
@@ -42,7 +45,8 @@ public class TesteArrayList {
 		for(int i = 0; i < args.length; i++ ) {
 			System.out.println(args[i]);
 		}
-		
+
+
 		
 	}
 }
